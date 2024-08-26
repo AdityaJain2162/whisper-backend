@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  whisper_api:
+    build:
+      context: .  # Use the current directory as the build context
+      dockerfile: Dockerfile  # Specify the Dockerfile name, if different, adjust it
+    image: insanely-fast-whisper-api  # Name the image being built
+    ports:
+      - "9091:9091"
+    environment:
+      HF_TOKEN: "Hugging Face Token-here"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
